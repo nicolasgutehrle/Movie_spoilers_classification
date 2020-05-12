@@ -72,7 +72,6 @@ sacremoses==0.0.41
 Send2Trash==1.5.0
 sentencepiece==0.1.86
 six==1.14.0
-spacy==2.2.4
 srsly==1.0.2
 streamlit==0.58.0
 terminado==0.8.3
@@ -81,7 +80,6 @@ thinc==7.4.0
 tokenizers==0.5.2
 toml==0.10.0
 toolz==0.10.0
-torch==1.5.0
 tornado==5.1.1
 tqdm==4.45.0
 traitlets==4.3.3
