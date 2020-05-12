@@ -1,5 +1,5 @@
 from transformers import pipeline
-import spacy
+# import spacy
 import pymongo
 import random
 import re
