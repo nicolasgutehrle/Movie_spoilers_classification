@@ -3,6 +3,7 @@ from transformers import pipeline
 import pymongo
 import random
 import re
+import os
 
 class MoviesApp():
 
@@ -58,8 +59,14 @@ class MoviesApp():
         Connect to local MongoDB instance
         :return:
         """
-        client = pymongo.MongoClient(host="mongodb://localhost:27017")
-        db = client.movie_reviews
+        # user = 'Gutyh'
+        # passw = 'L4dy-15-BacK'
+        # host = 'ds261817.mlab.com'
+        # port = '27707'
+        # client = pymongo.MongoClient(host=f"mongodb://{user}:{passw}@{host}:{port}/db")
+        # db = client.movie_reviews
+        client = pymongo.MongoClient(os.environ['MONGOLAB_URI'])
+        db = client.get_default_database()
         return db
 
     def load_pipeline(self, config):
