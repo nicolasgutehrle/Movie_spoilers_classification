@@ -126,13 +126,21 @@ def main():
     Loading main application
     :return:
     """
+    st.write('# Spoiling movie reviews')
+    random_review = st.button('Select another review')
+
+    st.write('---')
 
     review = get_review()
 
-    st.write(f"# {review['review_summary']}")
-    st.write(f"## {review['review_date']}")
+    st.write(f"## {review['review_summary']}")
+    st.write(f"### {review['review_date']}")
+
 
     st.write(review['review_text'], unsafe_allow_html=True)
+    st.write('---')
+    st.write(global_polarity_bar(review), unsafe_allow_html=True)
+
     st.write(get_colour_code(), unsafe_allow_html=True)
 
     if review['polarities']:
@@ -140,9 +148,6 @@ def main():
         c = chart_polarity_proportion(df_review)
         st.altair_chart(c, use_container_width=True)
 
-    st.write(global_polarity_bar(review), unsafe_allow_html=True)
-
-    random_review = st.button('Select another review')
     if random_review:
         review = get_review()
 

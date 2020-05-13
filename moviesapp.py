@@ -32,8 +32,16 @@ class MoviesApp():
         Connect to local MongoDB instance
         :return:
         """
-        client = pymongo.MongoClient(os.environ['MONGOLAB_URI'])
-        db = client.get_default_database()
+        try:
+            client = pymongo.MongoClient(os.environ['MONGOLAB_URI'])
+            db = client.get_default_database()
+        except KeyError:
+        # if not os.environ['MONGOLAB_URI']:
+            client = pymongo.MongoClient(host="mongodb://localhost:27017")
+            db = client.movie_reviews
+        # else:
+        #     client = pymongo.MongoClient(os.environ['MONGOLAB_URI'])
+        #     db = client.get_default_database()
         return db
 
     def load_pipeline(self, config):
